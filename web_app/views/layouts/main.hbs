@@ -1,0 +1,61 @@
+{{!Citation for the following file except for the reset button
+Date: 11/02/2025
+Copied from Exploration - Web Application Technology Module 6 CS340
+https://canvas.oregonstate.edu/courses/2017561/pages/exploration-web-application-technology-2?module_item_id=25645131}}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>CS340 - "The Local Stage" Skit Management</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/directors">Directors</a>
+        <a href="/shows">Shows</a>
+        <a href="/actors">Actors</a>
+        <a href="/skits">Skits</a>
+        <a href="/skit-actors">Skit Actors</a>
+        <button id="reset-skitactors"> Reset Skit Actors</button>
+    </nav>
+
+    {{{body}}}
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Page loaded');
+
+            const resetButton = document.getElementById('reset-skitactors');
+
+            if (resetButton) {
+                resetButton.addEventListener('click', function(event) {
+                    console.log('Reset Skit Actors button clicked.')
+
+                    // ask confirmation 
+                    if (confirm('Are you sure you want to reset Skit Actors? This will undo all changes')) {
+                        fetch('/skit-actors/reset', { method:'POST' })
+                        .then(function(response) {
+                            if (response.ok) {
+                                alert('Skit Actors has been reset.');
+                                location.reload();
+                            } else {
+                                alert('Error in resetting Skit Actors')
+                            }
+                        })
+                        .catch(function(error) {
+                            console.log('Error:', error)
+                            alert('An error has occurred trying to reset Skit Actors.')
+                        });
+                    }
+                });
+            }   else {
+                console.error('Reset button not found.')
+            }
+        });
+    </script> 
+
+</body>
+</html>
