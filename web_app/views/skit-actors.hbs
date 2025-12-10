@@ -1,0 +1,162 @@
+{{!Citation for the following file
+Date: 11/02/2025
+Based on Exploration - Web Application Technology Module 6 CS340
+https://canvas.oregonstate.edu/courses/2017561/pages/exploration-web-application-technology-2?module_item_id=25645131}}
+
+{{! Scroll to form line 155
+        // Citation for use of AI Tools:
+        // Date: 12/05/2025
+        // Prompts used: How can I make this button scroll to the update form when clicked in this code?
+// Edit button functionality  }}
+
+<h1>Skit Actors</h1>
+
+{{! READ table }}
+<table>
+    <thead>
+        {{! For the table header row, we print the DB attribute names }}
+        <tr>
+            <th>Skit Title</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Role</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {{! For each row, print the attributes }}
+        {{#each skitactors}}
+        <tr>
+            <td>{{this.title}}</td>
+            <td>{{this.firstName}}</td>
+            <td>{{this.lastName}}</td>
+            <td>{{this.role}}</td>
+            <td>
+            {{!-- EDIT button --}}
+            <button 
+                type="button" 
+                class="edit-btn"
+                data-skitid="{{this.skitID}}"
+                data-actorid="{{this.actorID}}"
+                data-role="{{this.role}}">
+                Edit
+            </button>
+
+            {{! DELETE form }}
+            <td>
+            <form id='delete_skitactor_form' method='POST' action='/skit-actors/delete'>
+                <input type='hidden' name='delete_skitactor_skitID' value='{{this.skitID}}' />
+                <input type='hidden' name='delete_skitactor_actorID' value='{{this.actorID}}' />
+                    <button type='submit'>
+                        Delete
+                    </button>
+            </form>
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+
+{{! CREATE form }}
+<h2>Add an Actor to a Skit</h2>
+<form class='cuForm' id='create_skitactor_form' method='POST' action='/skit-actors/create'>
+    <label for='create_skitactor_skit'>Skit: </label>
+    <select name="create_skitactor_skit" id="create_skitactor_skit" required>
+        <option value="" selected disabled>Select a Skit</option>
+        {{#each skits}}
+        <option value="{{this.skitID}}">{{this.title}}</option>
+        {{/each}}
+    </select>
+
+    <label for='create_skitactor_actor'>Actor: </label>
+    <select name="create_skitactor_actor" id="create_skitactor_actor" required>
+        <option value="" selected disabled>Select an Actor</option>
+        {{#each actors}}
+        <option value="{{this.actorID}}">{{this.firstName}} {{this.lastName}}</option>
+        {{/each}}
+    </select>
+
+    <label for='create_skitactor_role'>Role: </label>
+    <input type="text" name="create_skitactor_role" id="create_skitactor_role" required />
+
+    <input type="submit" value="Add Skit Actor" />
+</form>
+
+{{! UPDATE form }}
+<h2>Update an Actor's Performance</h2>
+<form class='cuForm' id='update_skitactor_form' method='POST' action='/skit-actors/update'>
+    <label for='update_skitactor_select'>Select Skit Actor to Update: </label>
+    <select name='update_skitactor_select' id='update_skitactor_select' required>
+        <option value='' disabled selected>Select a Skit Actor</option>
+        {{#each skitactors}}
+        <option value='{{this.skitID}}-{{this.actorID}}'>
+            {{this.title}}
+            -
+            {{this.firstName}}
+            {{this.lastName}}
+        </option>
+        {{/each}}
+    </select>
+
+    <label for='update_skitactor_new_skit'>New Skit: </label>
+    <select name='update_skitactor_new_skit' id='update_skitactor_new_skit' required>
+        <option value='' disabled selected>Select a Skit</option>
+        {{#each skits}}
+        <option value='{{this.skitID}}'>{{this.title}}</option>
+        {{/each}}
+    </select>
+
+        <label for='update_skitactor_new_actor'>New Actor: </label>
+    <select name='update_skitactor_new_actor' id='update_skitactor_new_actor' required>
+        <option value='' disabled selected>Select an Actor</option>
+        {{#each actors}}
+        <option value='{{this.actorID}}'>{{this.firstName}} {{this.lastName}}</option>
+        {{/each}}
+    </select>
+    
+    <label for='update_skitactor_new_role'>New Role: </label>
+    <input type='text' name='update_skitactor_new_role' id='update_skitactor_new_role' required />
+
+    <input type='submit' value="Update Skit Actor" />
+</form>
+
+<script>
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const updateForm = document.getElementById("update_skitactor_form");
+
+    const editButtons = document.querySelectorAll(".edit-btn");
+
+    editButtons.forEach(btn => {
+        btn.addEventListener("click", () => {
+            const skitID = btn.dataset.skitid;
+            const actorID = btn.dataset.actorid;
+            const role = btn.dataset.role;
+
+           
+            const select = document.getElementById("update_skitactor_select");
+            select.value = `${skitID}-${actorID}`;
+
+            
+            const newSkit = document.getElementById("update_skitactor_new_skit");
+            newSkit.value = skitID;
+
+            
+            const newActor = document.getElementById("update_skitactor_new_actor");
+            newActor.value = actorID;
+
+            
+            const newRole = document.getElementById("update_skitactor_new_role");
+            newRole.value = role;
+
+            // Scroll to edit form and highlight it
+            document.getElementById("update_skitactor_form").scrollIntoView({ behavior: "smooth" });
+            updateForm.classList.remove("highlight-update");
+            setTimeout(() => updateForm.classList.add("highlight-update"), 10);
+        });
+    });
+});
+</script>

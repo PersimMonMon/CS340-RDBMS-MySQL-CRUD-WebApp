@@ -1,0 +1,112 @@
+/* Control table stretching max-width line 39
+        Citation for use of AI Tools:
+        Date: 12/05/2025
+        Prompts used: How can I make this table not stretch to fit my widescreen monitor?*/
+body {
+    background-color: #faf7f3;       
+    font-family: Georgia, serif;;
+    color: #222;
+    margin: 0;
+}
+
+h1, h2 {
+    margin-left: 32px;
+    font-family: "Georgia", serif;    
+    color: #b22222;                   
+}
+
+nav {
+    background-color: #8662da;        
+    padding: 16px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-right: 20px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+
+table {
+    border-collapse: collapse;
+    margin-left: 32px;
+    width: 90%;
+    max-width: 1000px;
+    margin-bottom: 24px;
+}
+
+th, td {
+    border: 1px solid #d8c0a8;
+    padding: 12px;
+    text-align: center;
+}
+
+th {
+    background-color: #f7e7d4;
+    font-weight: bold;
+}
+
+tbody tr:hover {
+    background-color: #fff3e8;
+}
+
+.cuForm {
+    margin-left: 32px;
+    margin-bottom: 32px;
+    padding: 14px;
+    background-color: #fff;
+    border: 1px solid #d8c0a8;
+    max-width: 1400px;
+}
+
+input, select {
+    margin-bottom: 6px;
+    margin-right: 12px;
+    padding: 6px;
+}
+
+button,
+input[type="submit"] {
+    padding: 8px 14px;
+    border: none;
+    font-weight: bold;
+}
+
+.edit-btn {
+    background-color: #d19c1d;
+    color: white;
+}
+.edit-btn:hover {
+    background-color: #bb8b17;
+}
+
+input[type="submit"] {
+    background-color: #b22222;
+    color: white;
+}
+input[type="submit"]:hover {
+    background-color: #8f1c1c;
+}
+
+.highlight-update {
+    outline: 3px solid #d19c1d;
+    padding: 10px;
+    border-radius: 6px;
+    background-color: #fff6da;
+}
+
+.homepageDescription {
+    margin-left: 32px;
+    max-width: 800px;
+}
+
+.homepageHighlight {
+    color: #b22222;       
+    font-weight: bold;
+    font-size: 1.1em;     
+}

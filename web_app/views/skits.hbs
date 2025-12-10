@@ -1,0 +1,33 @@
+{{!Citation for the following file
+Date: 11/02/2025
+Adapted from Exploration - Web Application Technology Module 6 CS340
+https://canvas.oregonstate.edu/courses/2017561/pages/exploration-web-application-technology-2?module_item_id=25645131}}
+
+
+<h1>Skits</h1>
+{{! Read table}}
+<table>
+    <thead>
+        {{! For the table header row, we print the DB attribute names }}
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Show Date</th>
+            <th>Author First Name</th>
+            <th>Author Last Name</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {{! For each row, print the attributes }}
+        {{#each skits}}
+        <tr>
+            <td>{{this.title}}</td>
+            <td>{{this.description}}</td>
+            <td>{{this.show_date}}</td>
+            <td>{{this.firstName}}</td>
+            <td>{{this.lastName}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
