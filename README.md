@@ -1,5 +1,3 @@
-# Project: CS340-MySQL-RDMS-CRUD-WebApp-"The Local Stage" 
-
 # Description
 "The Local Stage" is a conceptual theatre company idea created by my groupmate and I for CS340 course project. The idea was designed to demonstrate **datebase functionality** with meaningful sample data while keeping the project manageable. The database includes **dive tables:** four entities and one intersection table, with **four relationships**, including **one many-to-many (M:N) relationship** using an intersection table. 
 
@@ -22,10 +20,10 @@ The web application demonstrates full **CRUD operations** using MySQL and PL/SQL
 
 # Database Design 
 **Entity Relationship Diagram (ERD)**   
-![ERD Diagram](./images.ERD.PNG)
+![ERD Diagram](https://github.com/PersimMonMon/CS340-RDBMS-MySQL-CRUD-WebApp/blob/main/images/ERD.PNG)
 
-**Database Schema** 
-![Database Schema](./images.schema.PNG)
+**Database Schema**      
+![Database Schema](https://github.com/PersimMonMon/CS340-RDBMS-MySQL-CRUD-WebApp/blob/main/images/schema.PNG)
 
   
   
