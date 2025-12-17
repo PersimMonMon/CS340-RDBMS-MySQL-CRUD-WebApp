@@ -9,7 +9,7 @@ The web application demonstrates full **CRUD operations** using MySQL and PL/SQL
 - Update M:N relationship - one M:N relationship
 - Delete - one table, using PL/SQL
 - Delete M:N relationship - one M:N relationship
-- Reste Database - using PL/SQL
+- Reset Database - using PL/SQL
 
 # Technologies Used 
 - MySQL
